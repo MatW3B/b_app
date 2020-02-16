@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="app">
+
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>PAI2019</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/css/font-awesome.min.css">
+	<link rel="stylesheet" href="/css/nv.d3.min.css">
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+</head>
+    
+<body class="workarea">
+    
+    <div class="container">
+
+		<div ng-controller="Menu as ctrl">
+
+			<div uib-alert class="alert-animated" ng-class="ctrl.alert.type" close="ctrl.closeAlert()" dismiss-on-timeout="3000" ng-if="ctrl.alert.text">
+				{{ctrl.alert.text}}
+			</div>
+
+			<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="container-fluid">
+
+					<div class="navbar-header">
+
+						<button type="button" class="navbar-toggle" ng-click="ctrl.isCollapsed = !ctrl.isCollapsed">
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+
+					</div>
+
+					<div class="navbar-collapse" ng-class="ctrl.isCollapsed ? 'collapse' : 'in'">
+
+						<ul class="nav navbar-nav">
+							<li ng-repeat="menuPos in ctrl.menu" ng-class="ctrl.navClass(menuPos.route)">
+								<a href="#{{menuPos.route}}" ng-bind-html="menuPos.title"></a>
+							</li>
+						</ul>
+
+						<ul class="nav navbar-nav navbar-right">
+							<li><a ng-bind-html="ctrl.loginIcon()" ng-click="ctrl.login()"></a></li>
+						</ul>
+
+					</div>
+				</div>
+			</nav>
+		</div>
+
+        <div ng-view></div>
+
+        </div>
+	</div>
+    
+<script src="/js/angular.min.js"></script>
+<script src="/js/ui-bootstrap-tpls.min.js"></script>
+<script src="/js/angular-sanitize.min.js"></script>
+<script src="/js/angular-cookies.min.js"></script>
+<script src="/js/angular-route.min.js"></script>
+<script src="/js/angular-animate.min.js"></script>
+<script src="/js/angular-websocket.min.js"></script>
+<script src="/js/ui-bootstrap-tpls.min.js"></script>
+<script src="/js/d3.min.js"></script>
+<script src="/js/nv.d3.min.js"></script>
+<script src="/js/angular-nvd3.min.js"></script>
+
+<script src="/js/app.js"></script>
+<script src="/js/confirm.js"></script>
+<script src="/js/home.js"></script>
+<script src="/js/transfer.js"></script>
+<script src="/js/history.js"></script>
+<script src="/js/trend.js"></script>
+<script src="/js/proposals.js"></script>
+
+
+</body></html>

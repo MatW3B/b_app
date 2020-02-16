@@ -1,0 +1,39 @@
+<div ng-if="ctrl.type == 'employee'">
+<h3>Użytkownicy</h3>
+Rekordów  <span>{{filtered.length}}</span> / <span ng-bind="ctrl.proposals.length"></span>
+<input class="form-inline" type="text" placeholder="Filtruj email/hasło" ng-model="ctrl.filter" ng-change="ctrl.refreshProposals()"/>
+<input class="form-inline" type="number" placeholder="Limit" ng-model="ctrl.limit" ng-change="ctrl.refreshProposals()"/> 
+<p>Pokaż: 
+    <select ng-model = "ctrl.selected" ng-change="ctrl.refreshProposals()" ng-init="ctrl.selected=ctrl.statusFilter[1]">
+        <option ng-repeat="status in ctrl.statusFilter" value={{status}} ng-bind="status" > {{status}} </option>
+    </select>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>Data</th>
+        <th style="text-align: center;">Email</th>
+        <th style="text-align: center;">Hasło</th>
+        <th style="text-align: center;">Typ</th>
+        <th style="text-align: center;">Zatwierdź</th>
+        <th style="text-align: center;">Odrzuć</th>
+    </tr>
+    <tr ng-repeat="entry in ctrl.proposals | filter: {status:ctrl.selected} as filtered">
+        <td ng-bind="ctrl.stamp2date(entry.date)"></td>
+        <td style="text-align: center;" ng-bind="entry.email"></td>
+        <td style="text-align: center;" ng-bind="entry.password"></td>
+        <td style="text-align: center;">
+        <select ng-model="entry.type" ng-change="ctrl.editProposal(entry._id,entry.type);" 
+        ng-selected="{{entry.type==type}}" ng-options="type for type in ctrl.types" >
+        </select>
+        </td>
+        <td style="text-align: center"><button class="btn btn-success btn-sm" ng-if="entry.status!='active'" ng-click="ctrl.editProposal(entry._id,'active')">Akceptuj</button></td>
+        <td style="text-align: center" >
+            <button class="btn btn-info btn-sm"ng-if="entry.status=='refused'" ng-click="ctrl.editProposal(entry._id,'awaiting')">Przywróć</button> 
+            <button class="btn btn-danger btn-sm"ng-if="entry.status=='awaiting'" ng-click="ctrl.editProposal(entry._id,'refused')">Odrzuć</button>
+        </td>
+    </tr>
+</table>
+</div>
+<div ng-if="ctrl.type != 'employee'">
+You are not authorised to view this page.
+</div>

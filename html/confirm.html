@@ -1,0 +1,8 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title" ng-bind="ctrl.opt.title"></h3>
+</div>
+<div class="modal-body" id="modal-body" ng-bind-html="ctrl.opt.body"></div>
+<div class="modal-footer">
+    <button class="btn btn-success fa fa-check" type="button" ng-click="ctrl.ok()" ng-if="!ctrl.opt.noOk"></button>
+    <button class="btn btn-danger fa fa-times" type="button" ng-click="ctrl.cancel()" ng-if="!ctrl.opt.noCancel"></button>
+</div>

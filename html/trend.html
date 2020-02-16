@@ -1,0 +1,11 @@
+<h3>Trend</h3>
+<nvd3 options="ctrl.options" data="ctrl.data" class="with-3d-shadow with-transitions"></nvd3>
+<p></p>
+<div style="text-align: center;">
+    <div style="display: inline-block;">
+        <p>Ostatnich przelewów
+            <span class="label label-default" ng-bind="ctrl.lastN"></span>
+        </p>
+        <input type="range" xclass="form" min="2" max="20" ng-model="ctrl.lastN" ng-change="ctrl.refreshData()"/>
+    </div>
+</div>

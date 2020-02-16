@@ -1,0 +1,23 @@
+<h3>Historia</h3>
+Rekordów <span ng-bind="ctrl.history.length"></span> / <span ng-bind="ctrl.historyCount"></span>
+<input class="form-inline" type="number" placeholder="Limit" ng-model="ctrl.limit" ng-change="ctrl.refreshHistory()"/>
+<input class="form-inline" type="text" placeholder="Filtruj" ng-model="ctrl.filter" ng-change="ctrl.refreshHistory()"/>
+
+<table class="table table-hover">
+    <tr>
+        <th>Data</th>
+        <th style="text-align: center;">Nadawca</th>
+        <th style="text-align: center;">Odbiorca</th>
+        <th style="text-align: right;">Kwota</th>
+        <th style="text-align: left;">Opis</th>
+        <th style="text-align: right;">Saldo po</th>
+    </tr>
+    <tr ng-repeat="entry in ctrl.history" ng-class="{ 'bg-green': entry.email_r == ctrl.email, 'bg-red': entry.email == ctrl.email }">
+        <td ng-bind="ctrl.stamp2date(entry.date)"></td>
+        <td style="text-align: center;" ng-bind="entry.email"></td>
+        <td style="text-align: center;" ng-bind="entry.email_r"></td>
+        <td style="text-align: right;" ng-bind="entry.amount"></td>
+        <td style="text-align: left;" ng-bind="entry.description"></td>
+        <td style="text-align: right;" ng-bind="entry.balance_after"></td>
+    </tr>
+</table>

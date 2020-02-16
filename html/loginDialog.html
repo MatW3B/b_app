@@ -1,0 +1,23 @@
+<form name="loginForm">
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Logowanie</h3>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <label for="email">Email</label>
+        <input id="email" type="text" class="form-control" ng-model="ctrl.creds.email" required="true" ng-change="ctrl.loginError = false;"/>
+        <label for="password">Hasło</label>
+        <input id="password" type="password" class="form-control" ng-model="ctrl.creds.password" ng-change="ctrl.loginError = false;"/>
+        <br>
+        Czy chceesz założyć konto?
+        <a href="javascript:void(0)" ng-click="ctrl.moveToAccount()">kliknij tutaj!</a>      
+    </div>
+
+    <div class="modal-footer">
+        <span style="float: left;" class="label label-warning" ng-if="ctrl.loginError">{{ctrl.loginErrorMessage}}</span>
+        <button class="btn btn-success fa fa-sign-in" type="submit" ng-disabled="loginForm.$invalid" ng-click="ctrl.tryLogin()"></button>
+        <button class="btn btn-danger fa fa-times" type="button" ng-click="ctrl.cancel()"></button>
+    </div>
+
+</form>

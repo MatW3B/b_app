@@ -1,0 +1,18 @@
+<form name="templateName">
+
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Czy chcesz zachować szablon?</h3>
+    </div>
+
+    <div class="modal-body" id="modal-body">
+        <label for="name">Nazwa szablonu:</label>
+        <input id="name" type="text" class="form-control" ng-model="ctrl.name" required="true" ng-change="ctrl.namingError=false;"/>
+    </div>
+
+    <div class="modal-footer">
+        <span style="float: left;" class="label label-warning" ng-if="ctrl.namingError">Ten szablon juz istnieje!</span>
+        <button class="btn btn-success fa fa-sign-in" type="submit" ng-disabled="templateName.$invalid" ng-click="ctrl.tryNaming()"></button>
+        <button class="btn btn-danger fa fa-times" type="button" ng-click="ctrl.cancel()"></button>
+    </div>
+
+</form>

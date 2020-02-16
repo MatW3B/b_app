@@ -1,0 +1,17 @@
+<h3>Saldo <span ng-bind="ctrl.account.balance"></span></h3>
+<p>Limit <span ng-bind="ctrl.account.limit"></span></p>
+<p>Szablony 
+    <select ng-model = "ctrl.selected" ng-change="ctrl.updateTransaction()" ng-init ="ctrl.selected = 0;">
+        <option ng-repeat="template in ctrl.templates" value={{$index}} ng-bind="template.name" > {{template.name}} </option>
+    </select>
+</p>
+<p>Przelew
+    <input type="text" list="recipients" class="form-inline" placeholder="Email odbiorcy" autocomplete="off" ng-model="ctrl.transaction.recipient" ng-change="ctrl.updateTemplate()">
+    <datalist id="recipients">
+        <option ng-repeat="recipient in ctrl.emails" value="{{recipient}}" ng-bind="recipient"></option>
+    </datalist>
+    <input class="form-inline" type="number" placeholder="Kwota" ng-model="ctrl.transaction.amount" ng-change="ctrl.updateTemplate()" />
+    <input class="form-inline" type="text" placeholder="Opis" ng-model="ctrl.transaction.description" ng-change="ctrl.updateTemplate()"/>
+    <button class="btn btn-success btn-sm" ng-click="ctrl.doTransfer()" ng-disabled="ctrl.formInvalid()">Zrób</button>
+    <button class="btn btn-primary btn-sm" ng-click="ctrl.saveTemplate()" ng-disabled="ctrl.formInvalid()">Zapisz</button>
+</p>
