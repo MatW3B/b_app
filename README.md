@@ -1,7 +1,3 @@
-# pai2020
-
-Project for "Programming internet applications" in winter semester 2019/2020.
-
 The goal was to use node and angular frameworks with mongoDB database to create a primitive banking app.
 Functionality:
 * account creating
